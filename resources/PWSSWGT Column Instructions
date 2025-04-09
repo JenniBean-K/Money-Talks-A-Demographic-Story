@@ -1,0 +1,65 @@
+# Using the `PWSSWGT` Weight in CPS Supplement Data
+
+The `PWSSWGT` variable is used to generate nationally representative estimates from the **Contingent Worker and Work Schedules Supplement (CWS)** in the Current Population Survey (CPS).
+
+## What is `PWSSWGT`?
+
+Each respondent in the CPS represents thousands of people in the population. The `PWSSWGT` value tells you **how many people** each respondent represents in the context of the CWS supplement. You must apply this weight to your analysis to produce accurate, population-level estimates.
+
+---
+
+## How to Use `PWSSWGT` with Salary Data
+
+### 1. Weighted Average Salary
+
+```python
+# Weighted average salary
+weighted_salary = (df['SALARY'] * df['PWSSWGT']).sum() / df['PWSSWGT'].sum()
+```
+
+This calculates the nationally representative average salary from the supplement responses.
+
+---
+
+### 2. Weighted Median Salary (conceptual)
+
+Weighted medians are more complex:
+- Sort the data by salary
+- Accumulate the `PWSSWGT` values
+- Find the value where cumulative weight reaches 50% of the total weight
+
+(Ask for code help if needed.)
+
+---
+
+### 3. Total Salary for a Group (e.g., Part-Time Workers)
+
+```python
+# Total weighted salary for part-time workers
+total_salary = (df.loc[df['WORKHOURS'] < 35, 'SALARY'] * df.loc[df['WORKHOURS'] < 35, 'PWSSWGT']).sum()
+```
+
+---
+
+### 4. Percentage in Salary Ranges
+
+To calculate the percentage of people earning under $50,000:
+
+```python
+under_50k = df.loc[df['SALARY'] < 50000, 'PWSSWGT'].sum()
+total = df['PWSSWGT'].sum()
+percent_under_50k = under_50k / total
+```
+
+---
+
+## Summary
+
+| Task | Method |
+|------|--------|
+| Average Salary | Weighted mean using `PWSSWGT` |
+| Median Salary | Weighted median (cumulative method) |
+| Total Salary by Group | Multiply `SALARY` × `PWSSWGT` and sum |
+| Percentage in Ranges | Use weight sums within conditions |
+
+Use these approaches to ensure your findings reflect the full U.S. population, not just the raw survey sample.
