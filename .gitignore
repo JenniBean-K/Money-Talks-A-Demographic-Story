@@ -15,6 +15,7 @@ resources/*.csv
 outputs/*.db
 resources/*.db
 *.db
+!outputs/avg_wage_data_over_time.csv
 
 # Distribution / packaging
 .Python
