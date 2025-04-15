@@ -5,7 +5,15 @@ __pycache__/
 
 # C extensions
 *.so
-.DS_Store 
+.DS_Store
+config.py
+outputs/*.csv
+resources/*.csv
+*.csv
+outputs/*.db
+resources/*.db
+*.db
+!outputs/avg_wage_data_over_time.csv
 
 # Distribution / packaging
 .Python

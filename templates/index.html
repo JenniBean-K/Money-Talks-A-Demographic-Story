@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wage Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>Compare Your Weekly Wage</h2>
+
+  <label>Occupation:
+    <select id="occupation">
+      {% for occupation in occupations %}
+      <option value="{{ occupation }}">{{ occupation }}</option>
+      {% endfor %}
+    </select>
+  </label><br><br>
+
+  <label>Your Weekly Earnings: $<input type="number" id="wage" step="0.01"></label><br><br>
+  <button onclick="submitForm()">Compare</button>
+
+  <canvas id="chart" width="400" height="200"></canvas>
+
+  <script>
+    function submitForm() {
+      const occupation = document.getElementById('occupation').value;
+      const wage = document.getElementById('wage').value;
+
+      fetch('/compare', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ occupation, wage })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const ctx = document.getElementById('chart').getContext('2d');
+        if (window.myChart) {
+          window.myChart.destroy();
+        }
+        window.myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['You', 'Male Avg', 'Female Avg', 'Overall Avg'],
+            datasets: [{
+              label: 'Weekly Earnings ($)',
+              data: [data.your_wage, data.male_avg, data.female_avg, data.overall_avg],
+              backgroundColor: ['red', 'green', 'yellow', 'blue']
+            }]
+          },
+          options: {
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
