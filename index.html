@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Equitable Pay by Occupation</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+
   <style>
     .equity-table {
       border-collapse: collapse;
@@ -18,6 +19,9 @@
       background-color: #f0f0f0;
     }
   </style>
+
+<script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="earnings_chart.js" defer></script> 
 </head>
 <body>
   <h1>Which Roles Offer the Most Equitable Pay?</h1>
@@ -25,10 +29,7 @@
   <div id="table-container"></div>
   <script src="gender_gap.js"></script>
 
-  <h1>Which Roles Offer the Most Equitable Pay?</h1>
-  <div id="controls"></div>
-  <div id="table-container"></div>
-  <div id="bar-chart-container"></div>
-  <script src="gender_gap.js"></script>
+  <h2>Weighted Weekly Earnings (2014–2024)</h2>
+  <div id="chartDiv" style="width:100%;max-width:800px;height:500px;"></div>
 </body>
 </html>
