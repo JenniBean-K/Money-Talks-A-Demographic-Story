@@ -1,169 +1,15 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const csvFile = "wage_gap_by_occupation.csv"; // Path to your CSV file
-
-//   d3.csv(csvFile, d3.autoType).then(data => {
-//     // Parse numeric fields
-//     data.forEach(d => {
-//       d.Weekly_Earnings = +d.Weekly_Earnings;
-//     });
-
-//     const years = Array.from(new Set(data.map(d => d.year))).sort();
-
-//     const yearSelect = d3.select("#controls")
-//       .append("label")
-//       .text("Select Year: ")
-//       .append("select")
-//       .attr("id", "year-select");
-
-//     yearSelect.selectAll("option")
-//       .data(years)
-//       .enter()
-//       .append("option")
-//       .text(d => d)
-//       .attr("value", d => d);
-
-//     yearSelect.on("change", updateTableAndGraph);
-
-//     // Initial display
-//     updateTableAndGraph();
-
-//     function updateTableAndGraph() {
-//       const selectedYear = +yearSelect.property("value") || years[0];
-//       const filteredData = data.filter(d => d.year === selectedYear);
-
-//       // Group by occupation and sex
-//       const grouped = d3.groups(filteredData, d => d.Occupation, d => d.Sex);
-
-//       // Aggregate average weekly earnings per occupation/sex
-//       const equityData = grouped.map(([occupation, sexGroup]) => {
-//         const earnings = {};
-//         sexGroup.forEach(([sex, records]) => {
-//           const avg = d3.mean(records, d => d.Weekly_Earnings);
-//           earnings[sex] = avg;
-//         });
-
-//         return {
-//           occupation,
-//           male: earnings.Male ?? null,
-//           female: earnings.Female ?? null,
-//           equityRatio: earnings.Female && earnings.Male ? earnings.Female / earnings.Male : null
-//         };
-//       });
-
-//       // Sort by how close the ratio is to 1
-//       equityData.sort((a, b) => {
-//         const aDiff = Math.abs(1 - (a.equityRatio ?? 0));
-//         const bDiff = Math.abs(1 - (b.equityRatio ?? 0));
-//         return aDiff - bDiff;
-//       });
-
-//       // Build table
-//       const table = d3.select("#table-container").html("")
-//         .append("table")
-//         .attr("class", "equity-table");
-
-//       const thead = table.append("thead").append("tr");
-//       thead.selectAll("th")
-//         .data(["Occupation", "Avg Male Earnings", "Avg Female Earnings", "Equity Ratio"])
-//         .enter()
-//         .append("th")
-//         .text(d => d);
-
-//       const tbody = table.append("tbody");
-
-//       const rows = tbody.selectAll("tr")
-//         .data(equityData)
-//         .enter()
-//         .append("tr");
-
-//       rows.append("td").text(d => d.occupation);
-//       rows.append("td").text(d => d.male != null ? `$${d.male.toFixed(2)}` : "N/A");
-//       rows.append("td").text(d => d.female != null ? `$${d.female.toFixed(2)}` : "N/A");
-//       rows.append("td").text(d => d.equityRatio != null ? d.equityRatio.toFixed(2) : "N/A")
-//         .style("color", d => {
-//           if (d.equityRatio == null) return "gray";
-//           return Math.abs(1 - d.equityRatio) < 0.1 ? "green" : "red";
-//         });
-
-//       // Create the bar chart visualization
-//       const margin = { top: 30, right: 20, bottom: 60, left: 50 };
-//       const width = 800 - margin.left - margin.right;
-//       const height = 400 - margin.top - margin.bottom;
-
-//       const svg = d3.select("#bar-chart-container").html("")
-//         .append("svg")
-//         .attr("width", width + margin.left + margin.right)
-//         .attr("height", height + margin.top + margin.bottom)
-//       .append("g")
-//         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-//       const x = d3.scaleBand()
-//         .domain(equityData.map(d => d.occupation))
-//         .range([0, width])
-//         .padding(0.1);
-
-//       const yMale = d3.scaleLinear()
-//         .domain([0, d3.max(equityData, d => d.male || 0)])
-//         .nice()
-//         .range([height, 0]);
-
-//       const yFemale = d3.scaleLinear()
-//         .domain([0, d3.max(equityData, d => d.female || 0)])
-//         .nice()
-//         .range([height, 0]);
-
-//       svg.append("g")
-//         .selectAll(".bar.male")
-//         .data(equityData)
-//         .enter()
-//         .append("rect")
-//         .attr("class", "bar male")
-//         .attr("x", d => x(d.occupation))
-//         .attr("y", d => yMale(d.male || 0))
-//         .attr("width", x.bandwidth() / 2)
-//         .attr("height", d => height - yMale(d.male || 0))
-//         .attr("fill", "steelblue");
-
-//       svg.append("g")
-//         .selectAll(".bar.female")
-//         .data(equityData)
-//         .enter()
-//         .append("rect")
-//         .attr("class", "bar female")
-//         .attr("x", d => x(d.occupation) + x.bandwidth() / 2)
-//         .attr("y", d => yFemale(d.female || 0))
-//         .attr("width", x.bandwidth() / 2)
-//         .attr("height", d => height - yFemale(d.female || 0))
-//         .attr("fill", "orange");
-
-//       svg.append("g")
-//         .attr("class", "x-axis")
-//         .attr("transform", "translate(0," + height + ")")
-//         .call(d3.axisBottom(x))
-//         .selectAll("text")
-//         .style("text-anchor", "middle")
-//         .attr("transform", "rotate(-45)")
-//         .style("font-size", "12px");
-
-//       svg.append("g")
-//         .attr("class", "y-axis-male")
-//         .call(d3.axisLeft(yMale));
-
-//       svg.append("g")
-//         .attr("class", "y-axis-female")
-//         .attr("transform", "translate(" + width + ", 0)")
-//         .call(d3.axisRight(yFemale));
-
-//     }
-//   });
-// });
 document.addEventListener("DOMContentLoaded", function () {
-  const csvFile = "wage_gap_by_occupation.csv";
+  const csvFile = "outputs/equity_gap.csv";
 
   d3.csv(csvFile, d3.autoType).then(data => {
+    console.log("Sample record:", data[0]);
+    
     // Parse numeric values
     data.forEach(d => {
       d.Weekly_Earnings = +d.Weekly_Earnings;
+      d.Sex = d.Sex?.trim();
+      if (d.Sex === "male") d.Sex = "Male";
+      if (d.Sex === "female") d.Sex = "Female";
     });
 
     const years = Array.from(new Set(data.map(d => d.year))).sort();
@@ -173,7 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
       .append("label")
       .text("Select Year: ")
       .append("select")
-      .attr("id", "year-select");
+      .attr("id", "year-select")
+      .style("background-color", "#ffffff")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "4px")
+      .style("padding", "12px 20px")
+      .style("font-size", "18px")
+      .style("margin-bottom", "30px")
+      .style("cursor", "pointer")
+      .style("box-shadow", "0 1px 3px rgba(0, 0, 0, 0.1)");
 
     yearSelect.selectAll("option")
       .data(years)
@@ -188,11 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTableAndGraph();
 
     function updateTableAndGraph() {
-      const selectedYear = +yearSelect.property("value") || years[0];
+      const selectedYear = +yearSelect.property("value");
       const filteredData = data.filter(d => d.year === selectedYear);
 
       // Group by occupation and sex
       const grouped = d3.groups(filteredData, d => d.Occupation, d => d.Sex);
+      console.log("Grouped data:", grouped);
 
       // Compute equity data per occupation
       const equityData = grouped.map(([occupation, sexGroup]) => {
@@ -208,6 +63,12 @@ document.addEventListener("DOMContentLoaded", function () {
           equityRatio: earnings.Female && earnings.Male ? earnings.Female / earnings.Male : null,
           gap: earnings.Male && earnings.Female ? earnings.Male - earnings.Female : null
         };
+      });
+
+      equityData.forEach(d => {
+        if (d.male == null || d.female == null) {
+          console.warn(`Missing data for ${d.occupation}`, d);
+        }
       });
 
       // Sort by smallest gap (closest to 0)
@@ -231,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .enter()
         .append("tr");
 
-      rows.append("td").text(d => d.occupation);
+      rows.append("td").text(d => d.occupation.replace(" occupations", ""));
       rows.append("td").text(d => d.male != null ? `$${d.male.toFixed(2)}` : "N/A");
       rows.append("td").text(d => d.female != null ? `$${d.female.toFixed(2)}` : "N/A");
       rows.append("td").text(d => d.equityRatio != null ? d.equityRatio.toFixed(2) : "N/A")
@@ -241,9 +102,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
       // === Build the Gap Bar Chart ===
-      const margin = { top: 40, right: 20, bottom: 100, left: 60 };
-      const width = 800 - margin.left - margin.right;
-      const height = 400 - margin.top - margin.bottom;
+      const margin = { top: 60, right: 40, bottom: 180, left: 80 };
+      const width = 760 - margin.left - margin.right;
+      const height = 500 - margin.top - margin.bottom;
 
       const svg = d3.select("#bar-chart-container").html("")
         .append("svg")
@@ -252,70 +113,74 @@ document.addEventListener("DOMContentLoaded", function () {
         .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
+      const topGaps = equityData
+        .filter(d => d.gap != null)
+        .sort((a, b) => Math.abs(b.gap) - Math.abs(a.gap))
+        .slice(0, 15);
+
       // X Scale (occupations)
       const x = d3.scaleBand()
-        .domain(equityData.map(d => d.occupation))
+        .domain(topGaps.map(d => d.occupation.replace(" occupations", "")))
         .range([0, width])
         .padding(0.2);
 
       // Y Scale (gap)
       const y = d3.scaleLinear()
-        .domain(d3.extent(equityData, d => d.gap || 0))
+        .domain([0, d3.max(topGaps, d => d.gap || 0)])
         .nice()
         .range([height, 0]);
 
       // Bars
       svg.selectAll(".gap-bar")
-        .data(equityData)
+        .data(topGaps)
         .enter()
         .append("rect")
         .attr("class", "gap-bar")
-        .attr("x", d => x(d.occupation))
+        .attr("x", d => x(d.occupation.replace(" occupations", "")))
         .attr("width", x.bandwidth())
         .attr("y", d => y(Math.max(0, d.gap || 0)))
         .attr("height", d => Math.abs(y(d.gap || 0) - y(0)))
         .attr("fill", d => d.gap > 0 ? "steelblue" : "orange")
         .append("title")
-        .text(d => `Gap: $${d.gap?.toFixed(2) || "N/A"}`);
+        .text(d => `${d.occupation.replace(" occupations", "")} Gap: $${d.gap?.toFixed(2) || "N/A"}`);
 
       // X Axis
       svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x))
         .selectAll("text")
-        .attr("transform", "rotate(-45)")
+        .attr("transform", "rotate(-35)")
+        .attr("dx", "-0.8em")
+        .attr("dy", "0.15em")
         .style("text-anchor", "end")
-        .style("font-size", "12px");
+        .style("font-size", "12px")
+        .style("fill", "#444");
 
       // Y Axis
       svg.append("g")
-        .call(d3.axisLeft(y).tickFormat(d => `$${d}`));
+        .call(d3.axisLeft(y).tickFormat(d => `$${d}`))
+        .selectAll("text")
+        .style("font-size", "14px")
+        .style("fill", "#333");
 
       // Title
       svg.append("text")
         .attr("x", width / 2)
-        .attr("y", -10)
+        .attr("y", -20)
         .attr("text-anchor", "middle")
-        .style("font-size", "16px")
+        .style("font-size", "20px")
+        .style("font-weight", "bold")
         .text(`Pay Gap by Occupation (${selectedYear}) — Male Minus Female Earnings`);
 
-      // Legend
-      svg.append("circle").attr("cx", 10).attr("cy", -30).attr("r", 6).style("fill", "steelblue");
-      svg.append("text").attr("x", 20).attr("y", -26).text("Male earns more").style("font-size", "12px");
+      const legendGroup = svg.append("g")
+        .attr("transform", `translate(${width / 2 - 100}, 10)`);
 
-      svg.append("circle").attr("cx", 150).attr("cy", -30).attr("r", 6).style("fill", "orange");
-      svg.append("text").attr("x", 160).attr("y", -26).text("Female earns more").style("font-size", "12px");
+      legendGroup.append("circle").attr("cx", 0).attr("cy", 0).attr("r", 6).style("fill", "steelblue");
+      legendGroup.append("text").attr("x", 10).attr("y", 4).text("Male earns more").style("font-size", "12px");
+
+      legendGroup.append("circle").attr("cx", 140).attr("cy", 0).attr("r", 6).style("fill", "orange");
+      legendGroup.append("text").attr("x", 150).attr("y", 4).text("Female earns more").style("font-size", "12px");
+
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
-

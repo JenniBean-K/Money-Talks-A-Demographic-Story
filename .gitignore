@@ -17,6 +17,7 @@ outputs/*.db
 resources/*.db
 *.db
 !outputs/avg_wage_data_over_time.csv
+!outputs/wage_gap_by_occupation.csv
 
 # Distribution / packaging
 .Python
