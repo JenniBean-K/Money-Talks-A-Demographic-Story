@@ -6,11 +6,60 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+      font-family: 'Merriweather', serif;
+    }
+    
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      color: white;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+    }
+
+    .hero-text h1 {
+      font-size: 5rem;
+      color: #fff;
+      margin: 0;
+      font-family: 'Merriweather', serif;
+    }
+
+    .hero-text p {
+      font-size: 1.8rem;
+      font-family: 'Merriweather', serif;
+    }
+
     .page-wrapper {
       max-width: 800px;
       margin: 0 auto;
-      padding: 0 20px;
-      box-sizing: border-box;
+      padding: 40px 20px;
     }
     .equity-table {
       border-collapse: collapse;
@@ -25,10 +74,6 @@
       background-color: #f0f0f0;
     }
     /* Additional styles from earnings.html */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
     h1 {
       color: #333;
     }
@@ -42,19 +87,6 @@
       margin-top: 40px;
     }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f9f9f9;
-      text-align: center;
-      padding: 40px;
-      color: #333;
-    }
     #occupation-select {
       background-color: #ffffff;
       border: 1px solid #ccc;
@@ -157,25 +189,95 @@
       margin-top: 30px;
       font-size: 16px;
     }
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      z-index: 99999;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    header.show {
+      transform: translateY(0);
+    }
   </style>
 
 <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.27.0/plotly.min.js"></script>
 <script src="earnings_chart.js" defer></script> 
 </head>
 <body>
+  <section class="hero">
+    <img src="images/hero.png" alt="Money Talks Hero" class="hero-image">
+    <div class="hero-text">
+      <h1>Money Talks</h1>
+      <p>What we earn says more than we think.</p>
+      <p>In America’s workforce, the same job doesn’t always mean the same pay. Using data from 2014 to 2024, this project visualizes disparities across gender, education, and occupation—and asks: who really gets paid fairly?</p>
+    </div>
+  </section>
+  <header>
+    <div style="text-align: left;">
+      <h1 style="margin: 0; font-size: 20px; font-weight: bold;">Money Talks</h1>
+      <p style="margin: 0; font-size: 14px; color: #666;">A Demographic Story</p>
+    </div>
+    <nav>
+      <a href="#equitable-pay" style="margin: 0 15px; text-decoration: none; color: #333;">Equitable Pay?</a>
+      <a href="#weekly-earnings" style="margin: 0 15px; text-decoration: none; color: #333;">Weekly Earnings</a>
+      <a href="#wage-gap" style="margin: 0 15px; text-decoration: none; color: #333;">Wage Gap</a>
+    </nav>
+  </header>
   <div class="page-wrapper">
-    <h1>Which Roles Offer the Most Equitable Pay?</h1>
+  <section class="intro" style="max-width: 800px; margin: 40px auto; text-align: left;">
+    <h1>Money Talks</h1>
+    <h2 style="margin-top: 0;">A Demographic Story</h2>
+    <p><strong>Summary:</strong> This project explores how weekly earnings in the U.S. workforce differ by gender, education, occupation, and experience. Through weighted analysis, the data reveals structural inequities and highlights a deeper truth: paychecks don’t just reflect work—they reflect worth, power, and access.</p>
+  </section>
+  
+  <section style="max-width: 800px; margin: 40px auto; text-align: left;">
+    <h2>Background</h2>
+    <p>This project was conducted as part of a data analytics capstone to investigate pay equity across the U.S. labor force. The analysis was inspired by real-world concerns around wage disparities and workforce inequality.</p>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Analyze how salary varies across gender, occupation, and education level.</li>
+      <li>Identify which roles offer the most equitable compensation.</li>
+      <li>Determine whether years of experience consistently correlate with higher earnings.</li>
+    </ul>
+
+    <h2>Problem</h2>
+    <p>Despite increased attention to workplace equity, persistent salary gaps still exist across industries. There’s a growing need for clear, data-driven insights to inform policies and hiring practices. This project aims to uncover patterns in wage disparities and elevate transparency around demographic and job-based differences in earnings.</p>
+  </section>
+
+  <p>Over the last decade, weekly earnings have risen across the board—but not evenly. By applying statistical weights that reflect population distribution, we uncover how these gains were distributed by gender. In many fields, men continue to outpace women in earnings, even as overall wage trends increase.</p>
+  <blockquote><em>“Even when women win the degree, they don’t always win the dollars.”</em></blockquote>
+
+    <!-- Weighted Weekly Earnings -->
+    <h2 id="weekly-earnings">Weighted Weekly Earnings (2014–2024)</h2>
+    <div id="chartDiv" style="width:100%;max-width:800px;height:500px;"></div>
+
+    <h1 id="equitable-pay">Which Roles Offer the Most Equitable Pay?</h1>
+    <p>Equal pay for equal work sounds simple. But the reality is far more complicated.</p>
+    <p>This visualization ranks the top 15 occupations with the <em>smallest</em> gender pay gaps. In these roles, women earn close to what men do—sometimes even more. But don't be fooled: many of these “equitable” roles are also among the lowest paying. Equality, in this case, often comes at a cost.</p>
+    <p>Below is a breakdown of average weekly earnings for men and women by occupation. The Equity Ratio reveals how close women’s earnings come to men’s—1.00 is perfect equity.</p>
     <div id="controls"></div>
     <div id="bar-chart-container" style="margin-bottom: 40px; display: flex; justify-content: center;"></div>
     <div id="table-container"></div>
     <script src="gender_gap.js"></script>
 
-    <!-- Weighted Weekly Earnings -->
-      <h2>Weighted Weekly Earnings (2014–2024)</h2>
-    <div id="chartDiv" style="width:100%;max-width:800px;height:500px;"></div>
-
       <!-- Wages by Occupation -->
-    <h1>Explore Wage Gap by Occupation</h1>
+    <h1 id="wage-gap">Explore Wage Gap by Occupation</h1>
+    <p>Some jobs pay men significantly more than women. Others, the gap is narrower—or reversed. This interactive chart lets you explore wage disparities by occupation.</p>
+    <p>Select a role to see who earns more—and by how much.</p>
+    <p><strong>Red = significant gap ($125+/week), Yellow = moderate gap (<$125), Green = Equal pay</strong></p>
     <select id="occupation-select"></select>
     <div class="chart-area">
       <div class="bar-container">
@@ -201,8 +303,41 @@
         <div class="legend-square green"></div> Equal Pay
       </div>
     </div>
+
+    <section style="max-width: 800px; margin: 60px auto; text-align: left;">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Promote pay transparency: Require companies to disclose compensation ranges by role and experience.</li>
+        <li>Invest in access to education and training: Improve pathways to higher-paying roles through upskilling, certification, and degree completion.</li>
+        <li>Conduct regular equity audits: Organizations should monitor salary structures to ensure consistent and fair compensation practices across demographics.</li>
+      </ul>
+
+      <h2>Summary of Findings</h2>
+      <p>This analysis revealed a persistent gender pay gap across nearly all occupations, with women earning less on average even when accounting for role and experience. Education was one of the strongest predictors of higher wages, particularly for those holding bachelor’s or advanced degrees. However, years of experience did not always correlate linearly with pay increases. The use of weighted averages was critical in representing the broader workforce, ensuring that high- or low-volume subgroups didn’t skew results.</p>
+      <p>Equity-friendly roles were identified, but they were often in lower-paying fields, while the most lucrative occupations tend to have the largest pay gaps. This highlights a key challenge in closing the compensation gap.</p>
+
+      <h2>Implications of the Study</h2>
+      <p>The findings have practical implications for employers, policymakers, and job seekers. Companies can use this analysis to adjust pay scales, address demographic imbalances, and improve compensation transparency. Educators and workforce development professionals can use these insights to guide curriculum and career training programs.</p>
+      <p>The project also demonstrates the importance of using statistical weights and disaggregated data to avoid misleading generalizations. With accessible API-powered visualizations and an interactive dashboard, this analysis can help inform public conversations around economic equity.</p>
+      <p>As conversations about economic justice continue, the data is clear: transparency is power. This project aims to turn information into insight—and insight into action.</p>
+    </section>
+
+    <h2>Explore Further</h2>
+    <p>Want to explore the data or bring this tool to your organization?<br>
+    <a href="#">Contact Us</a> or <a href="#">Download the Data</a></p>
+
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="earnings_gap.js"></script>
+    <script>
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+          header.classList.add('show');
+        } else {
+          header.classList.remove('show');
+        }
+      });
+    </script>
   </div>
 </body>
 </html>
