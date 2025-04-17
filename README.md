@@ -40,7 +40,7 @@ This project aims to tell a compelling, data-driven story about pay equity in th
 - **Database:** SQLite3
 - **Hosting:** GitHub Pages
 - **Data Sources:** U.S. Census Bureau (CPS Survey), Bureau of Labor Statistics
-- **Uncovered Library:** D3.js for interactive visualizations
+- **Uncovered Library:** Bokeh for visualization
 
 ---
 
