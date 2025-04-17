@@ -6,7 +6,7 @@
 
 **Money Talks: A Demographic Story** is a data analytics project created to investigate how weekly earnings in the U.S. workforce vary based on gender, occupation, education level, and years of experience. Our team utilized weighted statistical methods and interactive data visualizations to uncover persistent wage gaps and identify roles with more equitable compensation structures.
   
-🔗 [Explore the live interactive dashboard](https://jennibean-k.github.io/Money-Talks-A-Demographic-Story/)
+🔗 [Explore the live interactive dashboard](https://incomparable-semolina-1febd4.netlify.app)
 
 ---
 
