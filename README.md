@@ -1,73 +1,148 @@
-
-Project 3
-
 # Money Talks: A Demographic Story
 
-## Project Overview
+## Project 3 — Data Visualization Capstone
 
-"Money Talks" is a data analysis capstine project that investigates how weekly earnings in the U.S. workforce vary across gender, education leve, occupation, and experience. Using weighted statistical analysis ans interactive visualizations, this project identifies persistent pay disparities and highlights roles with the most equitable compensation structures.
+### Overview
 
-## Objectives 
+**Money Talks: A Demographic Story** is a data analytics project created to investigate how weekly earnings in the U.S. workforce vary based on gender, occupation, education level, and years of experience. Our team utilized weighted statistical methods and interactive data visualizations to uncover persistent wage gaps and identify roles with more equitable compensation structures.
+  
+🔗 [Explore the live interactive dashboard](https://jennibean-k.github.io/Money-Talks-A-Demographic-Story/)
 
-* Analyze salary variation by:
-    * Gender
-    * Occupation
-    * Education level
-    * Years of experience
-* Identify roles that offer equitable compensation.
-* Determine wheter experience consistently correlates with higher pay.
+---
 
-## Key Findings
+### Table of Contents
 
-* Gender Pay Gap: A consistent gender wage gap persists across most occupations, with men typically earning more than women in the same roles.
-* Education & Earnings: Higher education levels corralte with significantly higher wages.
-* Experience Plateaus: Years of experience do not always result in proportional salary increases; plateaus are common in some fields.
-* Weighted Analysis: The use of statistical weights (PSSWGT) helped ensure accurate representation of population-level trends.
+1. [Overview](#overview)
+2. [Purpose](#purpose)
+3. [Technologies Used](#technologies-used)
+4. [How It Works](#how-it-works)
+5. [Ethical Considerations](#ethical-considerations)
+6. [Repo Structure](#repo-structure)
+7. [Getting Started](#getting-started)
+8. [Key Insights](#key-insights)
+9. [Recommendations](#recommendations)
+10. [Data Sources](#data-sources)
+11. [Code References](#code-references)
+12. [Contributors](#contributors)
 
-## Summmary of Insights
+---
 
-* Gender disparities remain even after controlling for role and experience.
-* Education stands out as one of the strongest predictors of income.
-* Roles with higher equity ratios are often in lower-paid fields.
-* Weighted averages helped avoid misleading conclusions by accounting for population proprotions.
+### Purpose
 
-## Recommendations
+This project aims to tell a compelling, data-driven story about pay equity in the American workforce. By integrating Python, JavaScript, and SQLite3, we built a modern, interactive tool for visual exploration of wage disparities and population-level insights. Our dashboard allows users to explore the wage gap by role, sex, and time, empowering more informed discussion and advocacy around workplace equity.
 
-* Pay Transparency: Encourage employers to publish pay ranges by role and experience.
-* Upskilling & Training: Improve access to career advancement through education, certifications, and reskilling programs.
-* Regular Equity Audits: Businesses should conduct ongoing compensation reviews to ensure fairness across demographic groups.
+---
 
-## Interactive Visualization
+### Technologies Used
 
-We created an interavtive website that allows users to explore the wage gap by occupation. Users can select a role and instantly see:
-* Average weekly earnings for male and females
-* Visual wage comparison cahrt
-* A dynamically updates pay gap summary.
+- **Frontend:** HTML, CSS, JavaScript, D3.js
+- **Backend / Analysis:** Python, Pandas, Jupyter Notebook
+- **Database:** SQLite3
+- **Hosting:** GitHub Pages
+- **Data Sources:** U.S. Census Bureau (CPS Survey), Bureau of Labor Statistics
+- **Uncovered Library:** D3.js for interactive visualizations
 
-Live Website:   
+---
 
-## Technologies Used
+### How It Works
 
-* JavaScript (D3.js, HTML, CSS)
-* Jupyter Notebook for exploratory data analysis and statistical modeling
-* SQLite3 for local database storage and querying
-* CSV data sourced from Census/BLS datasets
-* GitHub Pages for dashboard hosting
+Users can explore wage data via:
+- A dropdown menu of occupations
+- A dynamically generated bar chart comparing male and female earnings
+- A real-time summary box describing the pay gap
+- Visual cues (color-coded boxes) to highlight severity of inequity
 
-## Presentation Summary
- 
-The accompanying presentation includes:
-* Project background and rationale
-* Step-by-step analytical approach
-* Data visualizations and dashboard demo
-* Summary of findings and implications
-* Actionable recommendations
+---
 
-PowerPoint deck: [Link to load PPT]
+### Ethical Considerations
 
-## Contributors
+This project includes several key ethical considerations:
+- **Privacy:** No personally identifiable information (PII) is used; all data is publicly available and anonymized.
+- **Bias Mitigation:** We applied population weights (PWSSWGT) from the CPS survey to ensure representative insights and reduce bias.
+- **Transparency:** All analysis and code are published openly on GitHub, and visualizations clearly label gaps, limitations, and assumptions.
+- **Inclusion:** Data visualizations aim to promote awareness of gender-based income inequality without sensationalism.
 
-* Joe Portnoy
-* Tatenda Manenji
-* Jenni Kim
+---
 
+### Repo Structure
+
+```
+Money-Talks-A-Demographic-Story/
+│
+├── data/                          # Raw and cleaned CSVs used for analysis
+│
+├── images/                        # Screenshots and visual assets
+│
+├── notebooks/                     # Jupyter notebooks with Python analysis
+│
+├── scripts/                       # JavaScript files for visualizations
+│   ├── earnings_gap.js
+│   └── gender_gap.js
+│
+├── index.html                     # Main dashboard HTML file
+├── style.css                      # Custom CSS for design and layout
+├── README.md                      # Project overview and usage
+├── .gitignore
+└── requirements.txt               # Python packages used for analysis
+```
+
+---
+
+### Getting Started
+
+To explore the project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JenniBean-K/Money-Talks-A-Demographic-Story.git
+   ```
+
+2. (Optional) Open the `notebooks/` folder to explore the analysis in Jupyter.
+
+3. Open `index.html` in your browser to interact with the dashboard.
+
+No additional installations are required unless you want to run the Python analysis.
+
+---
+
+### Key Insights
+
+- A consistent **gender wage gap** exists across most occupations, even when controlling for education and experience.
+- **Higher education** strongly correlates with increased earnings, but not always with increased equity.
+- In some industries, **experience plateaus**—more years on the job do not necessarily translate to higher pay.
+- **Lower-paid occupations** tend to have higher pay equity between genders.
+- Weighted averages (using `PWSSWGT`) provided more accurate population insights.
+
+---
+
+### Recommendations
+
+- **Pay Transparency:** Encourage publication of salary bands by role and experience.
+- **Upskilling:** Promote access to certifications and training to enable upward mobility.
+- **Equity Audits:** Organizations should regularly assess pay structures to address demographic inequities.
+
+---
+
+### Data Sources
+
+- [Current Population Survey (CPS)](https://www.census.gov/programs-surveys/cps.html) — U.S. Census Bureau
+- [Bureau of Labor Statistics](https://www.bls.gov/)
+
+---
+
+### Code References
+
+This project uses several public libraries and datasets. Special thanks to:
+- D3.js documentation and community for data binding and transitions
+- U.S. Census Bureau and BLS for making data publicly available
+- ObservableHQ and GitHub community examples for inspiration on visualization styling
+
+---
+
+### Contributors
+
+- **Joe Portnoy** – Data Visualization, Narrative Design, Web Integration  
+- **Tatenda Manenji** – Data Cleaning, Exploratory Analysis, Statistical Modeling  
+- **Jenni Kim** – Front-End Development, UX/UI Design, Data Pipeline
+
+---
