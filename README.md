@@ -69,21 +69,47 @@ This project includes several key ethical considerations:
 ```
 Money-Talks-A-Demographic-Story/
 │
-├── data/                          # Raw and cleaned CSVs used for analysis
+├── images/                        # Visual assets for the dashboard
+│   └── hero.png
 │
-├── images/                        # Screenshots and visual assets
+├── notebooks/                     # Jupyter notebooks for analysis and setup
+│   ├── bls_cps_data.ipynb
+│   ├── bls_sqlite_setup.ipynb
+│   └── bls-analysis.ipynb
 │
-├── notebooks/                     # Jupyter notebooks with Python analysis
+├── outputs/                       # Exported datasets and processed files
+│   ├── avg_wage_data_over_time.csv
+│   ├── bls_data.csv
+│   ├── bls_data.csv.zip
+│   ├── bls_wage_data.db
+│   ├── bls_wage_data.db.zip
+│   ├── earnings_chart.json
+│   ├── equity_gap.csv
+│   ├── wage_gap_by_occupation.csv
+│   └── wage_gap_by_occupation.csv.zip
 │
-├── scripts/                       # JavaScript files for visualizations
-│   ├── earnings_gap.js
-│   └── gender_gap.js
+├── resources/                     # Supporting reference files and documentation
+│   ├── 2025_Basic_CPS_Public_Use_Record_Layout_plus_IO_Code_list.txt
+│   └── PWSSWGT Column Instructions
 │
-├── index.html                     # Main dashboard HTML file
-├── style.css                      # Custom CSS for design and layout
-├── README.md                      # Project overview and usage
+├── static/
+│   ├── css/
+│   │   └── styles.css             # Custom CSS styles
+│   ├── js/                        # JavaScript files for data visualizations
+│   │   ├── bls.js
+│   │   ├── compare.js
+│   │   ├── earnings_chart.js
+│   │   ├── earnings_gap.js
+│   │   ├── education_chart.js
+│   │   └── gender_gap.js
+│   └── json/                      # Pre-processed JSON datasets
+│       ├── compare_wage.json
+│       └── education_enrollment_wage.json
+│
+├── index.html                     # Main web dashboard
+├── README.md                      # Project overview and usage instructions
+├── .gitattributes
 ├── .gitignore
-└── requirements.txt               # Python packages used for analysis
 ```
 
 ---
