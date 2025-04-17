@@ -1,0 +1,134 @@
+[
+  {
+    "occupation": "Transportation and material moving occupations",
+    "male_avg": 848.96,
+    "female_avg": 619.7,
+    "overall_avg": 734.33
+  },
+  {
+    "occupation": "Office and administrative support occupations",
+    "male_avg": 875.26,
+    "female_avg": 750.36,
+    "overall_avg": 812.81
+  },
+  {
+    "occupation": "Community and social service occupations",
+    "male_avg": 1166.54,
+    "female_avg": 1029.5,
+    "overall_avg": 1098.02
+  },
+  {
+    "occupation": "Building and grounds cleaning and maintenance occupations",
+    "male_avg": 658.9,
+    "female_avg": 463.6,
+    "overall_avg": 561.25
+  },
+  {
+    "occupation": "Sales and related occupations",
+    "male_avg": 1131.92,
+    "female_avg": 689.56,
+    "overall_avg": 910.74
+  },
+  {
+    "occupation": "Construction and extraction occupations",
+    "male_avg": 999.34,
+    "female_avg": 819.72,
+    "overall_avg": 909.53
+  },
+  {
+    "occupation": "Protective service occupations",
+    "male_avg": 1108.16,
+    "female_avg": 805.2,
+    "overall_avg": 956.68
+  },
+  {
+    "occupation": "Management occupations",
+    "male_avg": 1863.44,
+    "female_avg": 1466.46,
+    "overall_avg": 1664.95
+  },
+  {
+    "occupation": "Education instruction and library occupations",
+    "male_avg": 1294.04,
+    "female_avg": 1002.85,
+    "overall_avg": 1148.44
+  },
+  {
+    "occupation": "Healthcare practitioner and technical occupations",
+    "male_avg": 1695.51,
+    "female_avg": 1239.92,
+    "overall_avg": 1467.72
+  },
+  {
+    "occupation": "Production occupations",
+    "male_avg": 933.56,
+    "female_avg": 664.82,
+    "overall_avg": 799.19
+  },
+  {
+    "occupation": "Personal care and service occupations",
+    "male_avg": 646.71,
+    "female_avg": 488.52,
+    "overall_avg": 567.62
+  },
+  {
+    "occupation": "Business and financial operations occupations",
+    "male_avg": 1716.28,
+    "female_avg": 1341.28,
+    "overall_avg": 1528.78
+  },
+  {
+    "occupation": "Food preparation and serving related occupations",
+    "male_avg": 525.62,
+    "female_avg": 419.81,
+    "overall_avg": 472.72
+  },
+  {
+    "occupation": "Healthcare support occupations",
+    "male_avg": 735.48,
+    "female_avg": 587.14,
+    "overall_avg": 661.31
+  },
+  {
+    "occupation": "Installation, maintenance, and repair occupations",
+    "male_avg": 1055.78,
+    "female_avg": 905.14,
+    "overall_avg": 980.46
+  },
+  {
+    "occupation": "Arts, design, entertainment, sports, and media occupations",
+    "male_avg": 1281.43,
+    "female_avg": 1038.0,
+    "overall_avg": 1159.72
+  },
+  {
+    "occupation": "Legal occupations",
+    "male_avg": 2156.5,
+    "female_avg": 1498.49,
+    "overall_avg": 1827.5
+  },
+  {
+    "occupation": "Architecture and engineering occupations",
+    "male_avg": 1742.1,
+    "female_avg": 1481.24,
+    "overall_avg": 1611.67
+  },
+  {
+    "occupation": "Computer and mathematical occupations",
+    "male_avg": 1851.36,
+    "female_avg": 1543.08,
+    "overall_avg": 1697.22
+  },
+  {
+    "occupation": "Farming, fishing, and forestry occupations",
+    "male_avg": 651.58,
+    "female_avg": 513.77,
+    "overall_avg": 582.67
+  },
+  {
+    "occupation": "Life, physical, and social science occupations",
+    "male_avg": 1593.59,
+    "female_avg": 1375.61,
+    "overall_avg": 1484.6
+  }
+]

@@ -4,32 +4,157 @@
   <meta charset="UTF-8">
   <title>Equitable Pay by Occupation</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <link rel="stylesheet" href="static/css/styles.css">
 
-  <style>
-    .equity-table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    .equity-table th, .equity-table td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    .equity-table th {
-      background-color: #f0f0f0;
-    }
-  </style>
-
-<script src = "https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="earnings_chart.js" defer></script> 
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.27.0/plotly.min.js"></script>
+<script src="static/js/earnings_chart.js" defer></script> 
 </head>
 <body>
-  <h1>Which Roles Offer the Most Equitable Pay?</h1>
-  <div id="controls"></div>
-  <div id="table-container"></div>
-  <script src="gender_gap.js"></script>
+  <section class="hero">
+    <img src="images/hero.png" alt="Money Talks Hero" class="hero-image">
+    <div class="hero-text">
+      <h1>Money Talks</h1>
+      <p>What we earn says more than we think.</p>
+      <p>In America’s workforce, the same job doesn’t always mean the same pay. Using data from 2014 to 2024, this project visualizes disparities across gender, education, and occupation—and asks: who really gets paid fairly?</p>
+    </div>
+  </section>
+  <header>
+    <div style="text-align: left;">
+      <h1 style="margin: 0; font-size: 20px; font-weight: bold;">Money Talks</h1>
+      <p style="margin: 0; font-size: 14px; color: #666;">A Demographic Story</p>
+    </div>
+    <nav>
+      <a href="#equitable-pay" style="margin: 0 15px; text-decoration: none; color: #333;">Equitable Pay?</a>
+      <a href="#weekly-earnings" style="margin: 0 15px; text-decoration: none; color: #333;">Weekly Earnings</a>
+      <a href="#wage-gap" style="margin: 0 15px; text-decoration: none; color: #333;">Wage Gap</a>
+    </nav>
+  </header>
+  <div class="page-wrapper">
+  <section class="intro" style="max-width: 800px; margin: 40px auto; text-align: left;">
+    <h1>Money Talks</h1>
+    <h2 style="margin-top: 0;">A Demographic Story</h2>
+    <p><strong>Summary:</strong> This project explores how weekly earnings in the U.S. workforce differ by gender, education, occupation, and experience. Through weighted analysis, the data reveals structural inequities and highlights a deeper truth: paychecks don’t just reflect work—they reflect worth, power, and access.</p>
+  </section>
 
-  <h2>Weighted Weekly Earnings (2014–2024)</h2>
-  <div id="chartDiv" style="width:100%;max-width:800px;height:500px;"></div>
+  <h2 id="weekly-earnings" class="section-spacing">Weighted Weekly Earnings (2014–2024)</h2>
+  <p>This chart reveals the evolving pay landscape over the last decade. While earnings have generally increased, the gains haven’t been evenly distributed. Men consistently out-earn women across time, and the gap remains stubborn, even as more women earn degrees and enter the workforce. The weighted averages offer a more accurate picture by adjusting for labor force distribution, showing systemic inequities rather than isolated trends.</p>
+  <div id="chartDiv" class="section-spacing" style="width:100%;max-width:800px;height:500px;"></div>
+  
+  <section style="max-width: 800px; margin: 40px auto; text-align: left;">
+    <h2>Background</h2>
+    <p>This project was conducted as part of a data analytics capstone to investigate pay equity across the U.S. labor force. The analysis was inspired by real-world concerns around wage disparities and workforce inequality.</p>
+
+    <h2>Objectives</h2>
+    <ul>
+      <li>Analyze how salary varies across gender, occupation, and education level.</li>
+      <li>Identify which roles offer the most equitable compensation.</li>
+      <li>Determine whether years of experience consistently correlate with higher earnings.</li>
+    </ul>
+
+    <h2>Problem</h2>
+    <p>Despite increased attention to workplace equity, persistent salary gaps still exist across industries. There’s a growing need for clear, data-driven insights to inform policies and hiring practices. This project aims to uncover patterns in wage disparities and elevate transparency around demographic and job-based differences in earnings.</p>
+  </section>
+
+  <p>Over the last decade, weekly earnings have risen across the board—but not evenly. By applying statistical weights that reflect population distribution, we uncover how these gains were distributed by gender. In many fields, men continue to outpace women in earnings, even as overall wage trends increase.</p>
+
+    <!-- Weighted Weekly Earnings -->
+    <h2 id="education-heading" class="section-spacing">Earnings by Education Level and Gender</h2>
+    <p>This chart illustrates how education level impacts mean earnings for men and women. Though earnings rise with education for both genders, the distance between the male and female markers widens with each degree level. Men with advanced degrees, in particular, see a disproportionate earnings boost compared to equally educated women. This suggests that while education increases opportunity, it doesn’t eliminate structural disparities.</p>
+    <blockquote style="font-size: 1.5rem; font-style: italic; margin: 30px 0; padding-left: 20px; border-left: 5px solid #0074D9; color: #333;">
+      “Even when women win the degree, they don’t always win the dollars.”
+    </blockquote>
+
+    <h1 id="equitable-pay" class="section-spacing">Which Roles Offer the Most Equitable Pay?</h1>
+    <p>Equal pay for equal work sounds simple. But the reality is far more complicated.</p>
+    <p>This visualization ranks the top 15 occupations with the <em>smallest</em> gender pay gaps. In these roles, women earn close to what men do—sometimes even more. But don't be fooled: many of these “equitable” roles are also among the lowest paying. Equality, in this case, often comes at a cost.</p>
+    <p>Below is a breakdown of average weekly earnings for men and women by occupation. The Equity Ratio reveals how close women’s earnings come to men’s—1.00 is perfect equity.</p>
+    <div id="controls"></div>
+    <div id="bar-chart-container" class="section-spacing" style="margin-bottom: 40px; display: flex; justify-content: center;"></div>
+    <div id="table-container"></div>
+    <script src="static/js/gender_gap.js"></script>
+
+      <!-- Wages by Occupation -->
+    <h1 id="wage-gap" class="section-spacing">Explore Wage Gap by Occupation</h1>
+    <p>Some jobs pay men significantly more than women. Others, the gap is narrower—or reversed. This interactive chart lets you explore wage disparities by occupation.</p>
+    <p>Select a role to see who earns more—and by how much.</p>
+    <p><strong>Red = significant gap ($125+/week), Yellow = moderate gap (<$125), Green = Equal pay</strong></p>
+    <select id="occupation-select"></select>
+    <div class="chart-area section-spacing">
+      <div class="bar-container">
+        <div class="bar" id="female-bar"></div>
+        <div class="bar" id="male-bar"></div>
+        <div class="label" style="left: 70px;">Female</div>
+        <div class="label" style="left: 240px;">Male</div>
+      </div>
+      <div class="gap-box">
+        Wage Gap
+        <span id="gap-value">$0</span>
+      </div>
+    </div>
+    <div class="chart-footer">as of March 2025</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-square pink"></div> Gap more than $125/week
+      </div>
+      <div class="legend-item">
+        <div class="legend-square yellow"></div> Gap less than $125/week
+      </div>
+      <div class="legend-item">
+        <div class="legend-square green"></div> Equal Pay
+      </div>
+    </div>
+
+
+    <div class="callout-box">
+      <h2 class="section-spacing">How Do You Compare?</h2>
+      <p>This interactive tool gives users the ability to benchmark their earnings against national averages by gender and occupation. By entering your wage and selecting a role, you can see how your compensation stacks up against the broader workforce—and whether your pay aligns more closely with the male or female average. This tool surfaces the often hidden disparities individuals may face, even within seemingly fair job titles.</p>
+      <h2>Compare Your Weekly Wage</h2>
+      <label>Occupation:
+        <select id="occupation"></select>
+      </label><br><br>
+      <label>Your Weekly Earnings: $<input type="number" id="wage" step="0.01"></label><br><br>
+      <button onclick="submitForm()">Compare</button>
+      <div id="compare-chart" class="section-spacing" style="width:100%;max-width:600px;height:400px;"></div>
+    </div>
+
+  
+    <script src="static/js/education_chart.js" defer></script>
+    <script src="static/js/compare.js"></script>
+
+    <section style="max-width: 800px; margin: 60px auto; text-align: left;">
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Promote pay transparency: Require companies to disclose compensation ranges by role and experience.</li>
+        <li>Invest in access to education and training: Improve pathways to higher-paying roles through upskilling, certification, and degree completion.</li>
+        <li>Conduct regular equity audits: Organizations should monitor salary structures to ensure consistent and fair compensation practices across demographics.</li>
+      </ul>
+
+      <h2>Summary of Findings</h2>
+      <p>This analysis revealed a persistent gender pay gap across nearly all occupations, with women earning less on average even when accounting for role and experience. Education was one of the strongest predictors of higher wages, particularly for those holding bachelor’s or advanced degrees. However, years of experience did not always correlate linearly with pay increases. The use of weighted averages was critical in representing the broader workforce, ensuring that high- or low-volume subgroups didn’t skew results.</p>
+      <p>Equity-friendly roles were identified, but they were often in lower-paying fields, while the most lucrative occupations tend to have the largest pay gaps. This highlights a key challenge in closing the compensation gap.</p>
+
+      <h2>Implications of the Study</h2>
+      <p>The findings have practical implications for employers, policymakers, and job seekers. Companies can use this analysis to adjust pay scales, address demographic imbalances, and improve compensation transparency. Educators and workforce development professionals can use these insights to guide curriculum and career training programs.</p>
+      <p>The project also demonstrates the importance of using statistical weights and disaggregated data to avoid misleading generalizations. With accessible API-powered visualizations and an interactive dashboard, this analysis can help inform public conversations around economic equity.</p>
+      <p>As conversations about economic justice continue, the data is clear: transparency is power. This project aims to turn information into insight—and insight into action.</p>
+    </section>
+
+    <h2>Explore Further</h2>
+    <p>Want to explore the data or bring this tool to your organization?<br>
+    <a href="#">Contact Us</a> or <a href="#">Download the Data</a></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="static/js/earnings_gap.js"></script>
+    <script>
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+          header.classList.add('show');
+        } else {
+          header.classList.remove('show');
+        }
+      });
+    </script>
+  </div>
 </body>
 </html>
