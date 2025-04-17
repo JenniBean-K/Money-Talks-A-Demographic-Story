@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const csvFile = "outputs/equity_gap.csv";
+  const csvFile = "https://www.dropbox.com/scl/fi/xd0f1l4fa8iwlahkgkikd/equity_gap.csv?rlkey=b57u4j0b2u6u3jwfcjxgeht29&st=kt29gal0&dl=0";
 
   d3.csv(csvFile, d3.autoType).then(data => {
     console.log("Sample record:", data[0]);
