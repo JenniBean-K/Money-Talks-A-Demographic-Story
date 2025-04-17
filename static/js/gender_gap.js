@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const csvFile = "https://incomparable-semolina-1febd4.netlify.app/outputs/equity_gap.csv";
+  const csvFile = "outputs/equity_gap.csv";
 
   d3.csv(csvFile, d3.autoType).then(data => {
     console.log("Sample record:", data[0]);

@@ -87,6 +87,10 @@
       margin-top: 40px;
     }
 
+    .section-spacing {
+      margin-top: 40px;
+    }
+
     #occupation-select {
       background-color: #ffffff;
       border: 1px solid #ccc;
@@ -189,6 +193,11 @@
       margin-top: 30px;
       font-size: 16px;
     }
+    .chart-footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 16px;
+    }
     header {
       background-color: #fff;
       border-bottom: 1px solid #ddd;
@@ -210,10 +219,20 @@
     header.show {
       transform: translateY(0);
     }
+
+    .callout-box {
+      background-color: #f9f9f9;
+      border-left: 6px solid #0074D9;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 700px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
   </style>
 
 <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.27.0/plotly.min.js"></script>
-<script src="earnings_chart.js" defer></script> 
+<script src="static/js/earnings_chart.js" defer></script> 
 </head>
 <body>
   <section class="hero">
@@ -258,28 +277,33 @@
   </section>
 
   <p>Over the last decade, weekly earnings have risen across the board—but not evenly. By applying statistical weights that reflect population distribution, we uncover how these gains were distributed by gender. In many fields, men continue to outpace women in earnings, even as overall wage trends increase.</p>
-  <blockquote><em>“Even when women win the degree, they don’t always win the dollars.”</em></blockquote>
 
     <!-- Weighted Weekly Earnings -->
-    <h2 id="weekly-earnings">Weighted Weekly Earnings (2014–2024)</h2>
-    <div id="chartDiv" style="width:100%;max-width:800px;height:500px;"></div>
+    <h2 id="weekly-earnings" class="section-spacing">Weighted Weekly Earnings (2014–2024)</h2>
+    <p>This chart reveals the evolving pay landscape over the last decade. While earnings have generally increased, the gains haven’t been evenly distributed. Men consistently out-earn women across time, and the gap remains stubborn, even as more women earn degrees and enter the workforce. The weighted averages offer a more accurate picture by adjusting for labor force distribution, showing systemic inequities rather than isolated trends.</p>
+    <div id="chartDiv" class="section-spacing" style="width:100%;max-width:800px;height:500px;"></div>
+    <h2 id="education-heading" class="section-spacing">Earnings by Education Level and Gender</h2>
+    <p>This chart illustrates how education level impacts mean earnings for men and women. Though earnings rise with education for both genders, the distance between the male and female markers widens with each degree level. Men with advanced degrees, in particular, see a disproportionate earnings boost compared to equally educated women. This suggests that while education increases opportunity, it doesn’t eliminate structural disparities.</p>
+    <blockquote style="font-size: 1.5rem; font-style: italic; margin: 30px 0; padding-left: 20px; border-left: 5px solid #0074D9; color: #333;">
+      “Even when women win the degree, they don’t always win the dollars.”
+    </blockquote>
 
-    <h1 id="equitable-pay">Which Roles Offer the Most Equitable Pay?</h1>
+    <h1 id="equitable-pay" class="section-spacing">Which Roles Offer the Most Equitable Pay?</h1>
     <p>Equal pay for equal work sounds simple. But the reality is far more complicated.</p>
     <p>This visualization ranks the top 15 occupations with the <em>smallest</em> gender pay gaps. In these roles, women earn close to what men do—sometimes even more. But don't be fooled: many of these “equitable” roles are also among the lowest paying. Equality, in this case, often comes at a cost.</p>
     <p>Below is a breakdown of average weekly earnings for men and women by occupation. The Equity Ratio reveals how close women’s earnings come to men’s—1.00 is perfect equity.</p>
     <div id="controls"></div>
-    <div id="bar-chart-container" style="margin-bottom: 40px; display: flex; justify-content: center;"></div>
+    <div id="bar-chart-container" class="section-spacing" style="margin-bottom: 40px; display: flex; justify-content: center;"></div>
     <div id="table-container"></div>
-    <script src="gender_gap.js"></script>
+    <script src="static/js/gender_gap.js"></script>
 
       <!-- Wages by Occupation -->
-    <h1 id="wage-gap">Explore Wage Gap by Occupation</h1>
+    <h1 id="wage-gap" class="section-spacing">Explore Wage Gap by Occupation</h1>
     <p>Some jobs pay men significantly more than women. Others, the gap is narrower—or reversed. This interactive chart lets you explore wage disparities by occupation.</p>
     <p>Select a role to see who earns more—and by how much.</p>
     <p><strong>Red = significant gap ($125+/week), Yellow = moderate gap (<$125), Green = Equal pay</strong></p>
     <select id="occupation-select"></select>
-    <div class="chart-area">
+    <div class="chart-area section-spacing">
       <div class="bar-container">
         <div class="bar" id="female-bar"></div>
         <div class="bar" id="male-bar"></div>
@@ -291,7 +315,7 @@
         <span id="gap-value">$0</span>
       </div>
     </div>
-    <div class="footer">as of March 2025</div>
+    <div class="chart-footer">as of March 2025</div>
     <div class="legend">
       <div class="legend-item">
         <div class="legend-square pink"></div> Gap more than $125/week
@@ -303,6 +327,23 @@
         <div class="legend-square green"></div> Equal Pay
       </div>
     </div>
+
+
+    <div class="callout-box">
+      <h2 class="section-spacing">How Do You Compare?</h2>
+      <p>This interactive tool gives users the ability to benchmark their earnings against national averages by gender and occupation. By entering your wage and selecting a role, you can see how your compensation stacks up against the broader workforce—and whether your pay aligns more closely with the male or female average. This tool surfaces the often hidden disparities individuals may face, even within seemingly fair job titles.</p>
+      <h2>Compare Your Weekly Wage</h2>
+      <label>Occupation:
+        <select id="occupation"></select>
+      </label><br><br>
+      <label>Your Weekly Earnings: $<input type="number" id="wage" step="0.01"></label><br><br>
+      <button onclick="submitForm()">Compare</button>
+      <div id="compare-chart" class="section-spacing" style="width:100%;max-width:600px;height:400px;"></div>
+    </div>
+
+  
+    <script src="static/js/education_chart.js" defer></script>
+    <script src="static/js/compare.js"></script>
 
     <section style="max-width: 800px; margin: 60px auto; text-align: left;">
       <h2>Recommendations</h2>
@@ -327,7 +368,7 @@
     <a href="#">Contact Us</a> or <a href="#">Download the Data</a></p>
 
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="earnings_gap.js"></script>
+    <script src="static/js/earnings_gap.js"></script>
     <script>
       window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
