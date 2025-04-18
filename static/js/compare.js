@@ -36,8 +36,8 @@ function submitForm() {
           xref: 'paper',
           x: 0
         },
-        plot_bgcolor: '#fff',
-        paper_bgcolor: '#fff',
+        plot_bgcolor: '#f9f9f9',
+        paper_bgcolor: '#f9f9f9',
         yaxis: {
           title: 'Earnings ($)',
           titlefont: {
