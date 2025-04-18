@@ -34,6 +34,7 @@ html, body {
   left: 10%;
   color: white;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  max-width: 800px;
 }
 
 .hero-text h1 {
@@ -220,4 +221,9 @@ header.show {
   max-width: 700px;
   border-radius: 6px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+ 
+.hero-subheading-wrapper {
+  max-width: 66%;
+  line-height: 1.5;
 }
