@@ -22,12 +22,20 @@ async function fetchCSVData() {
 function populateDropdown(data) {
   const select = document.getElementById('occupation-select');
   select.innerHTML = ''; // Clear existing options
-  for (const occupation in data) {
+
+  const sortedOccupations = Object.entries(data)
+    .map(([occupation, values]) => ({
+      occupation,
+      gap: Math.abs(values.male - values.female)
+    }))
+    .sort((a, b) => b.gap - a.gap); // Most gap at top
+
+  sortedOccupations.forEach(({ occupation }) => {
     const option = document.createElement('option');
     option.value = occupation;
     option.textContent = occupation;
     select.appendChild(option);
-  }
+  });
 }
 
 function updateChart(occupation, data) {

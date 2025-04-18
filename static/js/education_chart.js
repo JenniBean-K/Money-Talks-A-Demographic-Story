@@ -19,7 +19,25 @@ fetch('static/json/education_enrollment_wage.json')
     }
 
     const educationLevels = [...new Set([...femaleData, ...maleData].map(d => d.x))];
-    educationLevels.sort((a, b) => a.localeCompare(b));
+    const customOrder = [
+      "Less than 1st grade",
+      "1st-4th grade",
+      "5th-6th grade",
+      "7th-8th grade",
+      "9th grade",
+      "10th grade",
+      "11th grade",
+      "12th grade, no diploma",
+      "High school graduate",
+      "Some college, no degree",
+      "Associate degree - occupational",
+      "Associate degree - academic",
+      "Bachelor's degree",
+      "Master's degree",
+      "Doctorate degree",
+      "Professional degree"
+    ];
+    educationLevels.sort((a, b) => customOrder.indexOf(a) - customOrder.indexOf(b));
 
     // Create dumbbell chart container
     const dumbbellDiv = document.createElement('div');

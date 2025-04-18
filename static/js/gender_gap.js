@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const years = Array.from(new Set(data.map(d => d.year))).sort();
 
     // Dropdown menu
-    const yearSelect = d3.select("#controls")
+    const yearSelect = d3.select("#dropdown-container")
+      .append("div")
+      .attr("id", "controls")
+      .style("margin", "20px 0")
       .append("label")
       .text("Select Year: ")
       .append("select")
@@ -71,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // Sort by smallest gap (closest to 0)
-      equityData.sort((a, b) => Math.abs(a.gap || 0) - Math.abs(b.gap || 0));
+      // Sort by highest equity ratio
+      equityData.sort((a, b) => (b.equityRatio || 0) - (a.equityRatio || 0));
 
       // === Build the table ===
       const table = d3.select("#table-container").html("")
