@@ -107,6 +107,7 @@ Money-Talks-A-Demographic-Story/
 │       └── education_enrollment_wage.json
 │
 ├── index.html                     # Main web dashboard
+├── Project 3 Group 3 - Presentation.pdf      # Presentation Slides
 ├── README.md                      # Project overview and usage instructions
 ├── .gitattributes
 ├── .gitignore
